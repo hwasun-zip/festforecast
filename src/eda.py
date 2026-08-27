@@ -2,13 +2,18 @@
 
 R²가 0.70에서 막혔을 때 모델을 바꾸는 대신 이 산점도를 다시 봤다.
 같은 기온 구간에서 방문객이 2배 이상 갈리는 점들이 보였고,
-그 점들을 나눠 보니 습도·풍속이 달랐다. -> features.py의 체감기온 가설로 연결
+그 점들을 나눠 보니 습도, 풍속이 달랐다. -> features.py의 체감기온 가설로 연결
 """
-
+import platform
 import matplotlib.pyplot as plt
 import pandas as pd
 
-plt.rcParams["font.family"] = "Malgun Gothic"
+# 한글 폰트: 로컬 Windows에서는 맑은 고딕, 그 외(Colab/Linux 등)에서는 나눔고딕 사용
+# Colab에서 처음 실행 시 `!apt -qq -y install fonts-nanum` 먼저 필요
+if platform.system() == "Windows":
+    plt.rcParams["font.family"] = "Malgun Gothic"
+else:
+    plt.rcParams["font.family"] = "NanumGothic"
 plt.rcParams["axes.unicode_minus"] = False
 
 
